@@ -3,6 +3,7 @@ package com.wikimore.mybatis.plugin;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.wikimore.mybatis.util.Const;
 import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -31,7 +32,7 @@ public class MysqlTableShardPlugin extends PluginAdapter {
   @Override
   public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
     topLevelClass.setSuperClass(new FullyQualifiedJavaType("BaseModel"));
-    topLevelClass.addImportedType(new FullyQualifiedJavaType("com.wikimore.mybatis.model.BaseModel"));
+    topLevelClass.addImportedType(new FullyQualifiedJavaType(Const.BASE_MODEL));
     return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
   }
 
@@ -61,7 +62,7 @@ public class MysqlTableShardPlugin extends PluginAdapter {
     introspectedTable.getContext().getCommentGenerator().addGeneralMethodComment(setShardMethod, introspectedTable);
     topLevelClass.addMethod(setShardMethod);
 
-    topLevelClass.addImportedType(new FullyQualifiedJavaType("com.wikimore.mybatis.shard.Shard"));
+    topLevelClass.addImportedType(new FullyQualifiedJavaType(Const.SHARD));
     return super.modelExampleClassGenerated(topLevelClass, introspectedTable);
   }
 

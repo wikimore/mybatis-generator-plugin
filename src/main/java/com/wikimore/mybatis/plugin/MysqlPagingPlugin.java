@@ -1,5 +1,6 @@
 package com.wikimore.mybatis.plugin;
 
+import com.wikimore.mybatis.util.Const;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.*;
@@ -25,7 +26,7 @@ public class MysqlPagingPlugin extends PluginAdapter {
   public boolean modelExampleClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
     FullyQualifiedJavaType type = new FullyQualifiedJavaType("Limit");
 
-    Field limit = new Field("limit",type);
+    Field limit = new Field("limit", type);
     limit.setVisibility(JavaVisibility.PROTECTED);
     introspectedTable.getContext().getCommentGenerator().addFieldComment(limit, introspectedTable);
     topLevelClass.addField(limit);
@@ -44,21 +45,19 @@ public class MysqlPagingPlugin extends PluginAdapter {
     introspectedTable.getContext().getCommentGenerator().addGeneralMethodComment(getLimit, introspectedTable);
     topLevelClass.addMethod(getLimit);
 
-    topLevelClass.addImportedType(new FullyQualifiedJavaType("com.wikimore.mybatis.paging.Limit"));
+    topLevelClass.addImportedType(new FullyQualifiedJavaType(Const.LIMIT));
 
     return super.modelExampleClassGenerated(topLevelClass, introspectedTable);
   }
 
   @Override
-  public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(XmlElement element,
-                                                                   IntrospectedTable introspectedTable) {
+  public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
     addLimitElement(element, introspectedTable);
     return super.sqlMapSelectByExampleWithoutBLOBsElementGenerated(element, introspectedTable);
   }
 
   @Override
-  public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(XmlElement element,
-                                                                IntrospectedTable introspectedTable) {
+  public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
     addLimitElement(element, introspectedTable);
     return super.sqlMapSelectByExampleWithBLOBsElementGenerated(element, introspectedTable);
   }
