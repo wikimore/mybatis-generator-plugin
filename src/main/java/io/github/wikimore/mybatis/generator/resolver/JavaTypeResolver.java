@@ -1,4 +1,4 @@
-package com.wikimore.mybatis.resolver;
+package io.github.wikimore.mybatis.generator.resolver;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

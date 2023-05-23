@@ -1,6 +1,6 @@
-package com.wikimore.mybatis.plugin;
+package io.github.wikimore.mybatis.generator.plugin;
 
-import com.wikimore.mybatis.util.Const;
+import io.github.wikimore.mybatis.generator.util.Const;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.*;

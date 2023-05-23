@@ -22,12 +22,13 @@
 	</execution>
 	</executions>
 	<configuration>
-	<configurationFile>src/main/mybatis/config.xml</configurationFile>
-	<overwrite>true</overwrite>
+	  <configurationFile>src/main/mybatis/config.xml</configurationFile>
+	  <overwrite>true</overwrite>
+      <includeCompileDependencies>true</includeCompileDependencies>
 	</configuration>
 	<dependencies>
 	<dependency>
-	  <groupId>com.wikimore</groupId>
+	  <groupId>io.github.wikimore</groupId>
 	  <artifactId>mybatis-generator-plugin</artifactId>
 	  <version>0.0.1</version>
 	</dependency>
@@ -40,30 +41,30 @@
 配置如下即可
 
 ```xml
-<plugin type="com.wikimore.mybatis.plugin.MysqlPagingPlugin"></plugin>
+
+<plugin type="io.github.wikimore.mybatis.generator.plugin.MysqlPagingPlugin"></plugin>
 ```
 #### 增加分表插件
 
 配置如下即可
 
 ```xml
-<plugin type="com.wikimore.mybatis.plugin.MysqlTableShardPlugin"></plugin>
+
+<plugin type="io.github.wikimore.mybatis.generator.plugin.MysqlTableShardPlugin"></plugin>
 ```
 
 ### 具体示例
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-
-  <classPathEntry
-    location="${jdbc driver path}" />
 
   <context id="mgp-example" targetRuntime="MyBatis3">
 
-    <plugin type="com.wikimore.mybatis.plugin.MysqlTableShardPlugin"></plugin>
-    <plugin type="com.wikimore.mybatis.plugin.MysqlPagingPlugin"></plugin>
+    <plugin type="io.github.wikimore.mybatis.generator.plugin.MysqlTableShardPlugin"></plugin>
+    <plugin type="io.github.wikimore.mybatis.generator.plugin.MysqlPagingPlugin"></plugin>
     <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
     <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
     <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"></plugin>
@@ -75,26 +76,26 @@
     <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
 
     <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306"
-      driverClass="com.mysql.cj.jdbc.Driver" password="password" userId="" />
+                    driverClass="com.mysql.cj.jdbc.Driver" password="password" userId=""/>
 
     <javaTypeResolver>
-      <property name="forceBigDecimals" value="false" />
+      <property name="forceBigDecimals" value="false"/>
     </javaTypeResolver>
 
     <javaModelGenerator targetPackage="com.example.model"
-      targetProject="src/main/java">
-      <property name="trimStrings" value="true" />
+                        targetProject="src/main/java">
+      <property name="trimStrings" value="true"/>
     </javaModelGenerator>
 
     <sqlMapGenerator targetPackage="mybatis"
-      targetProject="src/main/resources" />
+                     targetProject="src/main/resources"/>
 
     <javaClientGenerator targetPackage="com.example.dao"
-      targetProject="src/main/java" type="XMLMAPPER">
+                         targetProject="src/main/java" type="XMLMAPPER">
     </javaClientGenerator>
 
     <table schema="mgp" tableName="tb_gift" domainObjectName="Gift">
-      <property name="runtimeSchema" value="gift" />
+      <property name="runtimeSchema" value="gift"/>
     </table>
   </context>
 </generatorConfiguration>

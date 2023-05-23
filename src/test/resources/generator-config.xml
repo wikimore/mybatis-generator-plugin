@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry
+            location="/Users/wangzhiqiang/.m2/repository/mysql/mysql-connector-java/8.0.30/mysql-connector-java-8.0.30.jar" />
+
+    <context id="mgp-test" targetRuntime="MyBatis3">
+
+        <plugin type="io.github.wikimore.mybatis.generator.plugin.MapperXmlRenamePlugin"></plugin>
+        <plugin type="io.github.wikimore.mybatis.generator.plugin.MysqlTableShardPlugin"></plugin>
+        <plugin type="io.github.wikimore.mybatis.generator.plugin.MysqlPagingPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.MapperConfigPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
+        <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/mgp"
+                        driverClass="com.mysql.cj.jdbc.Driver" password="111111" userId="root" />
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.wikimore.model"
+                            targetProject="mybatis-generator-plugin">
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis"
+                         targetProject="mybatis-generator-plugin" />
+
+        <javaClientGenerator targetPackage="com.wikimore.dao"
+                             targetProject="mybatis-generator-plugin" type="XMLMAPPER">
+        </javaClientGenerator>
+
+        <table schema="mgp" tableName="tb_gift" domainObjectName="Gift">
+            <property name="runtimeSchema" value="mgprt" />
+        </table>
+    </context>
+</generatorConfiguration>

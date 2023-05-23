@@ -1,9 +1,9 @@
-package com.wikimore.mybatis.plugin;
+package io.github.wikimore.mybatis.generator.plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wikimore.mybatis.util.Const;
+import io.github.wikimore.mybatis.generator.util.Const;
 import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;

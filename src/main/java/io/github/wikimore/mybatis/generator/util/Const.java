@@ -1,4 +1,4 @@
-package com.wikimore.mybatis.util;
+package io.github.wikimore.mybatis.generator.util;
 
 /**
  * @author Ted Wang

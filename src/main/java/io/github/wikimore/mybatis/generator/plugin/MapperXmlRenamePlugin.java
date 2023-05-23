@@ -1,4 +1,4 @@
-package com.wikimore.mybatis.plugin;
+package io.github.wikimore.mybatis.generator.plugin;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
