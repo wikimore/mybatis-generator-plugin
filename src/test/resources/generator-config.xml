@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-
-    <classPathEntry
-            location="/Users/wangzhiqiang/.m2/repository/mysql/mysql-connector-java/8.0.30/mysql-connector-java-8.0.30.jar" />
-
     <context id="mgp-test" targetRuntime="MyBatis3">
 
         <plugin type="io.github.wikimore.mybatis.generator.plugin.MapperXmlRenamePlugin"></plugin>
@@ -23,18 +19,17 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.wikimore.model"
-                            targetProject="mybatis-generator-plugin">
+        <javaModelGenerator targetPackage="io.github.wikimore.model"
+                            targetProject="src/test/resources">
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mybatis"
-                         targetProject="mybatis-generator-plugin" />
+                         targetProject="src/test/resources" />
 
-        <javaClientGenerator targetPackage="com.wikimore.dao"
-                             targetProject="mybatis-generator-plugin" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="io.github.wikimore.dao"
+                             targetProject="src/test/resources" type="XMLMAPPER">
         </javaClientGenerator>
-
         <table schema="mgp" tableName="tb_gift" domainObjectName="Gift">
             <property name="runtimeSchema" value="mgprt" />
         </table>

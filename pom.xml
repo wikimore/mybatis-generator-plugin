@@ -6,7 +6,7 @@
 
   <groupId>io.github.wikimore</groupId>
   <artifactId>mybatis-generator-plugin</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <name>mybatis-generator-plugin</name>
   <description>A mybatis generator plugin for paging and table sharding with mysql.</description>
   <url>https://github.com/wikimore/mybatis-generator-plugin</url>
@@ -41,6 +41,12 @@
       <artifactId>mybatis-generator-core</artifactId>
       <version>1.4.2</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.32</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
