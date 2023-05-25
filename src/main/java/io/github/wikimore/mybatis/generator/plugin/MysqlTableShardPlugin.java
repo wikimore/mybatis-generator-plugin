@@ -9,6 +9,8 @@ import org.mybatis.generator.api.dom.xml.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * 增加分表逻辑代码的插件
@@ -56,6 +58,31 @@ public class MysqlTableShardPlugin extends PluginAdapter {
 
         topLevelClass.addImportedType(new FullyQualifiedJavaType(Const.SHARD));
         return super.modelExampleClassGenerated(topLevelClass, introspectedTable);
+    }
+
+    @Override
+    public boolean clientDeleteByPrimaryKeyMethodGenerated(Method method, Interface interfaze, IntrospectedTable introspectedTable) {
+        method.getParameters().clear();
+        FullyQualifiedJavaType parameterType = introspectedTable.getRules().calculateAllFieldsClass();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<>();
+        importedTypes.add(parameterType);
+        method.addParameter(new Parameter(parameterType, "row"));
+
+        return super.clientDeleteByPrimaryKeyMethodGenerated(method, interfaze, introspectedTable);
+    }
+
+    @Override
+    public boolean clientSelectByPrimaryKeyMethodGenerated(Method method, Interface interfaze, IntrospectedTable introspectedTable) {
+        method.getParameters().clear();
+
+        FullyQualifiedJavaType parameterType = introspectedTable.getRules().calculateAllFieldsClass();
+
+        Set<FullyQualifiedJavaType> importedTypes = new TreeSet<>();
+        importedTypes.add(parameterType);
+        method.addParameter(new Parameter(parameterType, "row"));
+
+        return super.clientSelectByPrimaryKeyMethodGenerated(method, interfaze, introspectedTable);
     }
 
     @Override
