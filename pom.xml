@@ -6,7 +6,7 @@
 
   <groupId>io.github.wikimore</groupId>
   <artifactId>mybatis-generator-plugin</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <name>mybatis-generator-plugin</name>
   <description>A mybatis generator plugin for paging and table sharding with mysql.</description>
   <url>https://github.com/wikimore/mybatis-generator-plugin</url>
